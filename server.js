@@ -1,6 +1,7 @@
 const express = require("express")
 const fs = require("fs")
 const app = express()
+require("dotenv").config()
 
 app.get("/country/:countryName/:keyword", (req, res) => {
   console.log("req", req.params)
@@ -36,6 +37,7 @@ app.get("/country/:countryName/:keyword", (req, res) => {
     res.json(filteredResults.slice(0, 10))
   })
 })
+const { host, environment } = process.env
 
 app.listen(4444, () => {
   console.log("listening on 4444")
